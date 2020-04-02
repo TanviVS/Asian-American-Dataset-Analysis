@@ -1,0 +1,44 @@
+#DDL
+ DDL DROP TABLE SurveyTaker; 
+ DROP TABLE Occupation; 
+ DROP TABLE Language; 
+ DROP TABLE Religion; 
+ DROP TABLE Ethnicity; 
+ DROP TABLE Gender; 
+ DROP TABLE QualityOfLife; 
+ 
+CREATE TABLE Occupation ( 
+  OccupationID NUMBER PRIMARY KEY,     
+  OccupationName VARCHAR2(40) ); 
+ 
+CREATE TABLE Language (     
+  LanguageID NUMBER PRIMARY KEY,     
+  LanguageName VARCHAR2(25) ); 
+ 
+CREATE TABLE Religion (     
+  ReligionID NUMBER PRIMARY KEY,     
+  ReligionName VARCHAR2(15) ); 
+ 
+CREATE TABLE Ethnicity (     
+  EthnicityID NUMBER PRIMARY KEY,     
+  EthnicityName VARCHAR2(15) ); 
+ 
+CREATE TABLE QualityOfLIfe (     
+  QualityID NUMBER PRIMARY KEY,     
+  QualityofLifeRating NUMBER ) ; 
+ 
+CREATE TABLE GENDER (     
+  GenderID NUMBER PRIMARY KEY,     
+  GenderName VARCHAR2(15) ) ; 
+ 
+CREATE TABLE SurveyTaker ( 
+  SurveyID NUMBER PRIMARY KEY,     
+  OccupationID    NUMBER(15) REFERENCES Occupation(OccupationID), 
+  EthnicityID NUMBER(15) REFERENCES Ethnicity(EthnicityID),     
+  LanguageID  NUMBER(15) REFERENCES Language(LanguageID),     
+  ReligionID NUMBER(15) REFERENCES Religion(ReligionID),     
+  QualityID NUMBER(15) REFERENCES QualityOfLife(QualityID),     
+  Gender NUMBER(3) REFERENCES Gender(GenderID),     
+  Age NUMBER(3),    
+  MaritalStatus VARCHAR2(40),     
+  Income VARCHAR2(40) ) ;
